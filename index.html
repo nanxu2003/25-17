@@ -1,0 +1,653 @@
+<!DOCTYPE html>
+<html lang="zh-CN" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SwiftCart Media Limited | 動畫設計與CG製作專家</title>
+    <meta name="description" content="SwiftCart Media Limited專注於高端CG製作、3D動畫設計、影視特效及遊戲美術外包服務。位於中國。">
+    
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@3.5.0/fonts/remixicon.css" rel="stylesheet">
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        brand: {
+                            dark: '#0B0E14',
+                            primary: '#6366f1', // Indigo
+                            accent: '#ec4899',  // Pink
+                            cyan: '#06b6d4'
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'system-ui', '-apple-system', 'Segoe UI', 'Roboto', 'Helvetica Neue', 'Arial', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        /* 全局樣式覆蓋 */
+        body {
+            background-color: #0B0E14;
+            color: #e2e8f0;
+            overflow-x: hidden;
+        }
+        
+        /* 滾動條美化 */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #0B0E14;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #334155;
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #475569;
+        }
+
+        /* 文字漸變效果 */
+        .text-gradient {
+            background: linear-gradient(to right, #6366f1, #ec4899, #06b6d4);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        /* 玻璃擬態導航欄 */
+        .glass-nav {
+            background: rgba(11, 14, 20, 0.85);
+            backdrop-filter: blur(12px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        /* 圖片遮罩 */
+        .img-overlay {
+            position: relative;
+            overflow: hidden;
+        }
+        .img-overlay::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(to top, rgba(0,0,0,0.8), transparent);
+            opacity: 0.6;
+            transition: opacity 0.3s;
+        }
+        .img-overlay:hover::after {
+            opacity: 0.3;
+        }
+        .img-overlay img {
+            transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .img-overlay:hover img {
+            transform: scale(1.05);
+        }
+    </style>
+</head>
+<body>
+
+    <header class="fixed w-full z-50 glass-nav transition-all duration-300" id="navbar">
+        <div class="container mx-auto px-6 py-4 flex justify-between items-center">
+            <div class="flex items-center space-x-2" data-aos="fade-right">
+                <div class="w-8 h-8 bg-gradient-to-br from-indigo-500 to-pink-500 rounded-lg flex items-center justify-center font-bold text-white">M</div>
+                <span class="text-xl font-bold tracking-wide text-white">SwiftCart Media</span>
+            </div>
+            
+            <nav class="hidden md:flex space-x-8 text-sm font-medium text-gray-300">
+                <a href="#home" class="hover:text-white transition-colors">首頁</a>
+                <a href="#about" class="hover:text-white transition-colors">關於我們</a>
+                <a href="#services" class="hover:text-white transition-colors">核心服務</a>
+                <a href="#portfolio" class="hover:text-white transition-colors">作品案例</a>
+                <a href="#workflow" class="hover:text-white transition-colors">製作流程</a>
+                <a href="#contact" class="hover:text-white transition-colors">聯繫我們</a>
+            </nav>
+
+            <a href="#contact" class="hidden md:inline-flex items-center justify-center px-5 py-2 text-sm font-medium text-white transition-all duration-200 bg-indigo-600 border border-transparent rounded-full hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500" data-aos="fade-left">
+                項目諮詢
+            </a>
+            
+            <button class="md:hidden text-white" id="mobile-menu-btn">
+                <i class="ri-menu-3-line text-2xl"></i>
+            </button>
+        </div>
+    </header>
+
+    <section id="home" class="relative h-screen flex items-center justify-center overflow-hidden">
+        <div class="absolute inset-0 z-0">
+            <img src="https://picsum.photos/seed/cyberpunk/1920/1080" alt="CG Background" class="w-full h-full object-cover opacity-40">
+            <div class="absolute inset-0 bg-gradient-to-b from-[#0B0E14] via-transparent to-[#0B0E14]"></div>
+        </div>
+
+        <div class="container mx-auto px-6 relative z-10 text-center">
+            <div class="inline-block px-3 py-1 mb-4 text-xs font-semibold tracking-wider text-indigo-400 uppercase bg-indigo-500/10 rounded-full border border-indigo-500/20" data-aos="fade-down">
+                Reimagining Digital Reality
+            </div>
+            <h1 class="text-5xl md:text-7xl font-bold mb-6 leading-tight text-white" data-aos="zoom-in" data-aos-delay="100">
+                用視覺藝術 <br />
+                <span class="text-gradient">重塑想象邊界</span>
+            </h1>
+            <p class="text-lg md:text-xl text-gray-400 mb-10 max-w-2xl mx-auto" data-aos="fade-up" data-aos-delay="200">
+                SwiftCart Media Limited致力於次世代遊戲美術、影視級CG動畫及高端視覺特效製作。我們將技術與創意完美融合，爲您的項目注入靈魂。
+            </p>
+            <div class="flex flex-col md:flex-row gap-4 justify-center" data-aos="fade-up" data-aos-delay="300">
+                <a href="#portfolio" class="px-8 py-3 bg-white text-gray-900 rounded-full font-bold hover:bg-gray-100 transition-transform hover:scale-105">查看作品集</a>
+                <a href="#contact" class="px-8 py-3 border border-gray-600 text-white rounded-full font-medium hover:border-white hover:bg-white/5 transition-all">聯繫商務</a>
+            </div>
+        </div>
+        
+        <div class="absolute bottom-10 left-1/2 transform -translate-x-1/2 animate-bounce text-gray-500">
+            <i class="ri-arrow-down-line text-2xl"></i>
+        </div>
+    </section>
+
+    <div class="border-y border-white/5 bg-white/5 backdrop-blur-sm py-6 overflow-hidden">
+        <div class="container mx-auto">
+            <p class="text-center text-xs text-gray-500 mb-4 tracking-widest uppercase">Powered by Technology</p>
+            <div class="flex justify-center flex-wrap gap-8 md:gap-16 opacity-60 grayscale hover:grayscale-0 transition-all duration-500">
+                <span class="text-xl font-bold text-gray-400 flex items-center gap-2"><i class="ri-blaze-line"></i> Unreal Engine 5</span>
+                <span class="text-xl font-bold text-gray-400 flex items-center gap-2"><i class="ri-unity-line"></i> Unity 3D</span>
+                <span class="text-xl font-bold text-gray-400 flex items-center gap-2"><i class="ri-shape-line"></i> Maya</span>
+                <span class="text-xl font-bold text-gray-400 flex items-center gap-2"><i class="ri-contrast-drop-line"></i> Blender</span>
+                <span class="text-xl font-bold text-gray-400 flex items-center gap-2"><i class="ri-movie-line"></i> Houdini FX</span>
+            </div>
+        </div>
+    </div>
+
+    <section id="about" class="py-20 md:py-32 relative">
+        <div class="container mx-auto px-6">
+            <div class="flex flex-col md:flex-row items-center gap-16">
+                <div class="w-full md:w-1/2 relative" data-aos="fade-right">
+                    <div class="absolute -inset-4 bg-gradient-to-r from-indigo-500 to-purple-600 rounded-2xl opacity-30 blur-lg"></div>
+                    <img src="https://picsum.photos/seed/workspace/800/600" alt="Office Environment" class="relative rounded-2xl shadow-2xl w-full object-cover h-[400px]">
+                </div>
+                <div class="w-full md:w-1/2" data-aos="fade-left">
+                    <h2 class="text-indigo-400 font-semibold tracking-wider uppercase mb-2">Who We Are</h2>
+                    <h3 class="text-3xl md:text-4xl font-bold text-white mb-6">紮根中國，服務全球的 <br>數字視覺工場</h3>
+                    <p class="text-gray-400 mb-6 leading-relaxed">
+                        SwiftCart Media Limited成立於數字經濟蓬勃發展的中國。我們是一羣由資深概念設計師、3D建模師和技術美術組成的極客團隊。
+                    </p>
+                    <p class="text-gray-400 mb-8 leading-relaxed">
+                        不同於傳統的製作公司，SwiftCart Media Limited堅持“技術驅動藝術”的理念，深度整合 AI 輔助工作流與手工精修，在保證藝術高度的同時，極大提升交付效率。無論是AAA級遊戲資產，還是影視級宣傳PV，我們都遊刃有餘。
+                    </p>
+                    <ul class="space-y-3 mb-8">
+                        <li class="flex items-center text-gray-300"><i class="ri-checkbox-circle-fill text-indigo-500 mr-3"></i> 100% 原創設計能力</li>
+                        <li class="flex items-center text-gray-300"><i class="ri-checkbox-circle-fill text-indigo-500 mr-3"></i> 嚴格的保密與版權保護體系</li>
+                        <li class="flex items-center text-gray-300"><i class="ri-checkbox-circle-fill text-indigo-500 mr-3"></i> 7x24小時項目響應機制</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="py-12 border-t border-b border-white/5 bg-white/5">
+        <div class="container mx-auto px-6">
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-8 text-center divide-x divide-white/10">
+                <div data-aos="fade-up" data-aos-delay="0">
+                    <div class="text-4xl font-bold text-white mb-2">5+</div>
+                    <div class="text-sm text-gray-400">成立年限</div>
+                </div>
+                <div data-aos="fade-up" data-aos-delay="100">
+                    <div class="text-4xl font-bold text-indigo-400 mb-2">300+</div>
+                    <div class="text-sm text-gray-400">交付項目</div>
+                </div>
+                <div data-aos="fade-up" data-aos-delay="200">
+                    <div class="text-4xl font-bold text-pink-500 mb-2">50+</div>
+                    <div class="text-sm text-gray-400">合作企業</div>
+                </div>
+                <div data-aos="fade-up" data-aos-delay="300">
+                    <div class="text-4xl font-bold text-cyan-400 mb-2">99%</div>
+                    <div class="text-sm text-gray-400">好評率</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="services" class="py-20 bg-[#0F1219]">
+        <div class="container mx-auto px-6 mb-12 text-center">
+            <h2 class="text-3xl md:text-4xl font-bold text-white mb-4" data-aos="fade-up">我們的核心競爭力</h2>
+            <p class="text-gray-400 max-w-2xl mx-auto" data-aos="fade-up" data-aos-delay="100">提供全流程的數字視覺解決方案，從概念設計到最終渲染。</p>
+        </div>
+
+        <div class="container mx-auto px-6 grid grid-cols-1 md:grid-cols-3 gap-8">
+            <div class="group p-8 rounded-2xl bg-[#161b26] border border-white/5 hover:border-indigo-500/50 transition-all duration-300 hover:transform hover:-translate-y-2" data-aos="fade-up" data-aos-delay="0">
+                <div class="w-14 h-14 bg-indigo-500/10 rounded-xl flex items-center justify-center text-indigo-400 mb-6 group-hover:bg-indigo-500 group-hover:text-white transition-colors">
+                    <i class="ri-gamepad-line text-3xl"></i>
+                </div>
+                <h3 class="text-xl font-bold text-white mb-3">遊戲美術全案</h3>
+                <p class="text-gray-400 text-sm leading-relaxed mb-4">
+                    涵蓋角色原畫、場景概念、3D次世代建模、動作綁定及特效製作。擅長PBR流程，完美適配UE5及Unity引擎。
+                </p>
+                <a href="#contact" class="text-indigo-400 text-sm font-semibold hover:text-indigo-300 inline-flex items-center">瞭解更多 <i class="ri-arrow-right-line ml-1"></i></a>
+            </div>
+
+            <div class="group p-8 rounded-2xl bg-[#161b26] border border-white/5 hover:border-pink-500/50 transition-all duration-300 hover:transform hover:-translate-y-2" data-aos="fade-up" data-aos-delay="100">
+                <div class="w-14 h-14 bg-pink-500/10 rounded-xl flex items-center justify-center text-pink-400 mb-6 group-hover:bg-pink-500 group-hover:text-white transition-colors">
+                    <i class="ri-film-line text-3xl"></i>
+                </div>
+                <h3 class="text-xl font-bold text-white mb-3">影視CG動畫</h3>
+                <p class="text-gray-400 text-sm leading-relaxed mb-4">
+                    提供影視級片頭、產品宣傳PV、建築漫遊動畫製作。擁有強大的渲染農場支持，確保4K/8K超清畫質交付。
+                </p>
+                <a href="#contact" class="text-pink-400 text-sm font-semibold hover:text-pink-300 inline-flex items-center">瞭解更多 <i class="ri-arrow-right-line ml-1"></i></a>
+            </div>
+
+            <div class="group p-8 rounded-2xl bg-[#161b26] border border-white/5 hover:border-cyan-500/50 transition-all duration-300 hover:transform hover:-translate-y-2" data-aos="fade-up" data-aos-delay="200">
+                <div class="w-14 h-14 bg-cyan-500/10 rounded-xl flex items-center justify-center text-cyan-400 mb-6 group-hover:bg-cyan-500 group-hover:text-white transition-colors">
+                    <i class="ri-eye-2-line text-3xl"></i>
+                </div>
+                <h3 class="text-xl font-bold text-white mb-3">VR/AR 交互內容</h3>
+                <p class="text-gray-400 text-sm leading-relaxed mb-4">
+                    元宇宙展廳搭建、VR全景看房、AR互動營銷內容開發。將虛擬與現實結合，創造沉浸式用戶體驗。
+                </p>
+                <a href="#contact" class="text-cyan-400 text-sm font-semibold hover:text-cyan-300 inline-flex items-center">瞭解更多 <i class="ri-arrow-right-line ml-1"></i></a>
+            </div>
+        </div>
+    </section>
+
+    <section class="relative py-24 bg-fixed bg-center bg-cover bg-no-repeat" style="background-image: url('https://picsum.photos/seed/render/1920/1080');">
+        <div class="absolute inset-0 bg-black/70"></div>
+        <div class="container mx-auto px-6 relative z-10 text-center">
+            <i class="ri-double-quotes-l text-4xl text-indigo-500 mb-4 inline-block"></i>
+            <h3 class="text-2xl md:text-4xl font-serif italic text-white mb-6">“細節決定成敗，我們追求每一個像素的完美。”</h3>
+            <p class="text-gray-300">— SwiftCart Media Limited 藝術總監</p>
+        </div>
+    </section>
+
+    <section id="portfolio" class="py-20">
+        <div class="container mx-auto px-6">
+            <div class="flex flex-col md:flex-row justify-between items-end mb-12">
+                <div>
+                    <h2 class="text-3xl font-bold text-white mb-2">精選案例</h2>
+                    <p class="text-gray-400">Recent Featured Works</p>
+                </div>
+                <div class="mt-4 md:mt-0 space-x-2">
+                    <button class="px-4 py-2 text-sm bg-indigo-600 text-white rounded-lg">全部</button>
+                    <button class="px-4 py-2 text-sm bg-[#161b26] text-gray-400 hover:text-white rounded-lg border border-white/5">遊戲角色</button>
+                    <button class="px-4 py-2 text-sm bg-[#161b26] text-gray-400 hover:text-white rounded-lg border border-white/5">場景渲染</button>
+                </div>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <div class="group relative rounded-xl overflow-hidden cursor-pointer" data-aos="fade-up">
+                    <div class="img-overlay h-72">
+                        <img src="https://picsum.photos/seed/scifi/600/400" alt="Work 1" class="w-full h-full object-cover">
+                    </div>
+                    <div class="absolute bottom-0 left-0 right-0 p-6 translate-y-4 group-hover:translate-y-0 transition-transform">
+                        <span class="text-xs text-indigo-400 font-bold uppercase mb-1 block">Game Art</span>
+                        <h3 class="text-lg font-bold text-white">機甲戰士概設</h3>
+                    </div>
+                </div>
+                <div class="group relative rounded-xl overflow-hidden cursor-pointer" data-aos="fade-up" data-aos-delay="100">
+                    <div class="img-overlay h-72">
+                        <img src="https://picsum.photos/seed/architecture/600/400" alt="Work 2" class="w-full h-full object-cover">
+                    </div>
+                    <div class="absolute bottom-0 left-0 right-0 p-6 translate-y-4 group-hover:translate-y-0 transition-transform">
+                        <span class="text-xs text-pink-400 font-bold uppercase mb-1 block">Visualization</span>
+                        <h3 class="text-lg font-bold text-white">未來城市概念圖</h3>
+                    </div>
+                </div>
+                <div class="group relative rounded-xl overflow-hidden cursor-pointer" data-aos="fade-up" data-aos-delay="200">
+                    <div class="img-overlay h-72">
+                        <img src="https://picsum.photos/seed/monster/600/400" alt="Work 3" class="w-full h-full object-cover">
+                    </div>
+                    <div class="absolute bottom-0 left-0 right-0 p-6 translate-y-4 group-hover:translate-y-0 transition-transform">
+                        <span class="text-xs text-cyan-400 font-bold uppercase mb-1 block">3D Modeling</span>
+                        <h3 class="text-lg font-bold text-white">異獸高模雕刻</h3>
+                    </div>
+                </div>
+                <div class="group relative rounded-xl overflow-hidden cursor-pointer" data-aos="fade-up">
+                    <div class="img-overlay h-72">
+                        <img src="https://picsum.photos/seed/neon/600/400" alt="Work 4" class="w-full h-full object-cover">
+                    </div>
+                    <div class="absolute bottom-0 left-0 right-0 p-6 translate-y-4 group-hover:translate-y-0 transition-transform">
+                        <span class="text-xs text-indigo-400 font-bold uppercase mb-1 block">VFX</span>
+                        <h3 class="text-lg font-bold text-white">粒子特效演示</h3>
+                    </div>
+                </div>
+                <div class="group relative rounded-xl overflow-hidden cursor-pointer" data-aos="fade-up" data-aos-delay="100">
+                    <div class="img-overlay h-72">
+                        <img src="https://picsum.photos/seed/car/600/400" alt="Work 5" class="w-full h-full object-cover">
+                    </div>
+                    <div class="absolute bottom-0 left-0 right-0 p-6 translate-y-4 group-hover:translate-y-0 transition-transform">
+                        <span class="text-xs text-pink-400 font-bold uppercase mb-1 block">Commercial</span>
+                        <h3 class="text-lg font-bold text-white">汽車TVC廣告渲染</h3>
+                    </div>
+                </div>
+                <div class="group relative rounded-xl overflow-hidden cursor-pointer" data-aos="fade-up" data-aos-delay="200">
+                    <div class="img-overlay h-72">
+                        <img src="https://picsum.photos/seed/cartoon/600/400" alt="Work 6" class="w-full h-full object-cover">
+                    </div>
+                    <div class="absolute bottom-0 left-0 right-0 p-6 translate-y-4 group-hover:translate-y-0 transition-transform">
+                        <span class="text-xs text-cyan-400 font-bold uppercase mb-1 block">Character</span>
+                        <h3 class="text-lg font-bold text-white">卡通IP形象設計</h3>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="mt-12 text-center">
+                <a href="#" class="inline-block border-b border-indigo-500 text-indigo-400 pb-1 hover:text-white hover:border-white transition-colors">查看更多 Behance 主頁</a>
+            </div>
+        </div>
+    </section>
+
+    <section id="workflow" class="py-20 bg-[#0F1219]">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl font-bold text-white">標準制作流程</h2>
+                <p class="text-gray-400 mt-2">Professional Workflow</p>
+            </div>
+            
+            <div class="relative">
+                <div class="hidden md:block absolute top-1/2 left-0 w-full h-0.5 bg-gray-800 -translate-y-1/2"></div>
+                
+                <div class="grid grid-cols-1 md:grid-cols-4 gap-8 relative z-10">
+                    <div class="bg-[#161b26] p-6 rounded-xl border border-white/5 text-center group hover:border-indigo-500 transition-colors" data-aos="fade-up" data-aos-delay="0">
+                        <div class="w-10 h-10 bg-indigo-600 rounded-full flex items-center justify-center text-white font-bold mx-auto mb-4 border-4 border-[#0F1219]">1</div>
+                        <h4 class="text-lg font-bold text-white mb-2">需求溝通</h4>
+                        <p class="text-sm text-gray-400">明確項目風格、規格及交付時間節點。</p>
+                    </div>
+                    <div class="bg-[#161b26] p-6 rounded-xl border border-white/5 text-center group hover:border-pink-500 transition-colors" data-aos="fade-up" data-aos-delay="100">
+                        <div class="w-10 h-10 bg-pink-600 rounded-full flex items-center justify-center text-white font-bold mx-auto mb-4 border-4 border-[#0F1219]">2</div>
+                        <h4 class="text-lg font-bold text-white mb-2">概念設定</h4>
+                        <p class="text-sm text-gray-400">輸出草圖與白模，確定視覺方向。</p>
+                    </div>
+                    <div class="bg-[#161b26] p-6 rounded-xl border border-white/5 text-center group hover:border-cyan-500 transition-colors" data-aos="fade-up" data-aos-delay="200">
+                        <div class="w-10 h-10 bg-cyan-600 rounded-full flex items-center justify-center text-white font-bold mx-auto mb-4 border-4 border-[#0F1219]">3</div>
+                        <h4 class="text-lg font-bold text-white mb-2">資產製作</h4>
+                        <p class="text-sm text-gray-400">高精建模、貼圖繪製、動畫K幀與特效。</p>
+                    </div>
+                    <div class="bg-[#161b26] p-6 rounded-xl border border-white/5 text-center group hover:border-green-500 transition-colors" data-aos="fade-up" data-aos-delay="300">
+                        <div class="w-10 h-10 bg-green-600 rounded-full flex items-center justify-center text-white font-bold mx-auto mb-4 border-4 border-[#0F1219]">4</div>
+                        <h4 class="text-lg font-bold text-white mb-2">渲染交付</h4>
+                        <p class="text-sm text-gray-400">後期合成、成片輸出及售後修改支持。</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="py-20">
+        <div class="container mx-auto px-6">
+            <h2 class="text-3xl font-bold text-white mb-12 text-center">客戶反饋</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <div class="bg-[#161b26] p-8 rounded-2xl border border-white/5 relative" data-aos="fade-right">
+                    <i class="ri-double-quotes-r text-4xl text-gray-700 absolute top-6 right-6"></i>
+                    <p class="text-gray-300 italic mb-6">"SwiftCart Media Limited團隊對美術風格的把控非常精準，尤其是在二次元角色的三維化處理上，給了我們很大的驚喜。交付非常準時！"</p>
+                    <div class="flex items-center">
+                        <img src="https://picsum.photos/seed/person1/50/50" class="w-12 h-12 rounded-full mr-4" alt="Client">
+                        <div>
+                            <h5 class="text-white font-bold">張經理</h5>
+                            <span class="text-xs text-gray-500">某知名遊戲公司 項目主美</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="bg-[#161b26] p-8 rounded-2xl border border-white/5 relative" data-aos="fade-left">
+                    <i class="ri-double-quotes-r text-4xl text-gray-700 absolute top-6 right-6"></i>
+                    <p class="text-gray-300 italic mb-6">"合作過很多次了，他們的渲染質量非常高，溝通也很順暢。對於急單的處理能力讓人印象深刻。"</p>
+                    <div class="flex items-center">
+                        <img src="https://picsum.photos/seed/person2/50/50" class="w-12 h-12 rounded-full mr-4" alt="Client">
+                        <div>
+                            <h5 class="text-white font-bold">李總監</h5>
+                            <span class="text-xs text-gray-500">影視傳媒公司 製作人</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="py-20 bg-[#0F1219]">
+        <div class="container mx-auto px-6 max-w-4xl">
+            <h2 class="text-3xl font-bold text-white mb-10 text-center">常見問題</h2>
+            <div class="space-y-4">
+                <details class="group bg-[#161b26] rounded-lg p-4 cursor-pointer">
+                    <summary class="flex justify-between items-center font-medium text-white list-none">
+                        <span>如何開始一個項目合作？</span>
+                        <span class="transition group-open:rotate-180"><i class="ri-arrow-down-s-line"></i></span>
+                    </summary>
+                    <p class="text-gray-400 mt-4 text-sm leading-relaxed">
+                        您可以通過下方的聯繫表單或直接撥打電話聯繫我們。我們會安排資深商務經理與您對接，評估需求並提供免費的初步報價方案。
+                    </p>
+                </details>
+                <details class="group bg-[#161b26] rounded-lg p-4 cursor-pointer">
+                    <summary class="flex justify-between items-center font-medium text-white list-none">
+                        <span>你們接受測試單（Test）嗎？</span>
+                        <span class="transition group-open:rotate-180"><i class="ri-arrow-down-s-line"></i></span>
+                    </summary>
+                    <p class="text-gray-400 mt-4 text-sm leading-relaxed">
+                        對於長期合作的大型項目，我們接受付費測試。如果最終確認合作，測試費用可抵扣項目款項。
+                    </p>
+                </details>
+                <details class="group bg-[#161b26] rounded-lg p-4 cursor-pointer">
+                    <summary class="flex justify-between items-center font-medium text-white list-none">
+                        <span>關於知識產權如何界定？</span>
+                        <span class="transition group-open:rotate-180"><i class="ri-arrow-down-s-line"></i></span>
+                    </summary>
+                    <p class="text-gray-400 mt-4 text-sm leading-relaxed">
+                        這是我們最重視的部分。項目結款後，所有源文件及版權將完全歸屬於客戶。我們會簽署嚴格的保密協議（NDA）。
+                    </p>
+                </details>
+            </div>
+        </div>
+    </section>
+
+    <section class="py-20">
+        <div class="container mx-auto px-6">
+            <div class="flex justify-between items-center mb-8">
+                <h2 class="text-2xl font-bold text-white">最新動態</h2>
+                <a href="#" class="text-sm text-gray-400 hover:text-white">查看博客 <i class="ri-arrow-right-line"></i></a>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                <article class="bg-[#161b26] rounded-xl overflow-hidden group">
+                    <div class="h-48 overflow-hidden">
+                        <img src="https://picsum.photos/seed/tech1/400/300" class="w-full h-full object-cover transition-transform group-hover:scale-110" alt="News">
+                    </div>
+                    <div class="p-5">
+                        <span class="text-xs text-indigo-400 mb-2 block">2023-10-15</span>
+                        <h3 class="text-white font-bold mb-2 group-hover:text-indigo-400 transition-colors">UE5 Lumen技術在建築可視化中的應用</h3>
+                        <p class="text-gray-500 text-sm line-clamp-2">探討如何利用虛幻引擎5的實時光線追蹤技術提升項目交付效率...</p>
+                    </div>
+                </article>
+                <article class="bg-[#161b26] rounded-xl overflow-hidden group">
+                    <div class="h-48 overflow-hidden">
+                        <img src="https://picsum.photos/seed/tech2/400/300" class="w-full h-full object-cover transition-transform group-hover:scale-110" alt="News">
+                    </div>
+                    <div class="p-5">
+                        <span class="text-xs text-indigo-400 mb-2 block">2023-09-22</span>
+                        <h3 class="text-white font-bold mb-2 group-hover:text-indigo-400 transition-colors">SwiftCart Media Limited榮獲CGDA年度最佳視覺獎</h3>
+                        <p class="text-gray-500 text-sm line-clamp-2">感謝組委會的認可，我們將繼續在數字藝術領域深耕細作...</p>
+                    </div>
+                </article>
+                <article class="bg-[#161b26] rounded-xl overflow-hidden group">
+                    <div class="h-48 overflow-hidden">
+                        <img src="https://picsum.photos/seed/tech3/400/300" class="w-full h-full object-cover transition-transform group-hover:scale-110" alt="News">
+                    </div>
+                    <div class="p-5">
+                        <span class="text-xs text-indigo-400 mb-2 block">2023-08-10</span>
+                        <h3 class="text-white font-bold mb-2 group-hover:text-indigo-400 transition-colors">AI繪畫輔助3D貼圖製作的工作流分享</h3>
+                        <p class="text-gray-500 text-sm line-clamp-2">Stable Diffusion 在遊戲資產生產中的實際落地案例分析...</p>
+                    </div>
+                </article>
+            </div>
+        </div>
+    </section>
+
+    <section class="py-12 bg-gradient-to-r from-indigo-900 to-purple-900">
+        <div class="container mx-auto px-6 flex flex-col md:flex-row justify-between items-center">
+            <div class="mb-6 md:mb-0">
+                <h2 class="text-2xl font-bold text-white mb-2">正在尋找優秀的你</h2>
+                <p class="text-indigo-200">我們長期招聘 3D美術師、技術美術(TA) 及 動畫師。</p>
+            </div>
+            <a href="mailto:contact@swiftcartmedia.bond" class="px-8 py-3 bg-white text-indigo-900 rounded-full font-bold hover:bg-gray-100 transition shadow-lg">
+                投遞簡歷
+            </a>
+        </div>
+    </section>
+
+    <section id="contact" class="py-20 relative overflow-hidden">
+        <div class="absolute -top-20 -right-20 w-96 h-96 bg-indigo-600 rounded-full mix-blend-multiply filter blur-3xl opacity-10"></div>
+        <div class="absolute -bottom-20 -left-20 w-96 h-96 bg-pink-600 rounded-full mix-blend-multiply filter blur-3xl opacity-10"></div>
+
+        <div class="container mx-auto px-6 relative z-10">
+            <div class="flex flex-col lg:flex-row gap-12">
+                <div class="w-full lg:w-1/3" data-aos="fade-right">
+                    <h2 class="text-4xl font-bold text-white mb-8">開始您的<br><span class="text-gradient">創意之旅</span></h2>
+                    
+                    <div class="space-y-8">
+                        <div class="flex items-start">
+                            <div class="w-12 h-12 bg-[#161b26] rounded-lg flex items-center justify-center text-indigo-400 text-xl flex-shrink-0">
+                                <i class="ri-map-pin-line"></i>
+                            </div>
+                            <div class="ml-4">
+                                <h4 class="text-white font-bold mb-1">公司地址</h4>
+                                <p class="text-gray-400 text-sm">Rm B 3/F KAI WAN HSE 146 TUNG CHOI ST</p>
+                            </div>
+                        </div>
+
+                        <div class="flex items-start">
+                            <div class="w-12 h-12 bg-[#161b26] rounded-lg flex items-center justify-center text-pink-400 text-xl flex-shrink-0">
+                                <i class="ri-mail-send-line"></i>
+                            </div>
+                            <div class="ml-4">
+                                <h4 class="text-white font-bold mb-1">商務郵箱</h4>
+                                <p class="text-gray-400 text-sm">contact@swiftcartmedia.bond</p>
+                            </div>
+                        </div>
+
+                        <div class="flex items-start">
+                            <div class="w-12 h-12 bg-[#161b26] rounded-lg flex items-center justify-center text-cyan-400 text-xl flex-shrink-0">
+                                <i class="ri-phone-line"></i>
+                            </div>
+                            <div class="ml-4">
+                                <h4 class="text-white font-bold mb-1">聯繫電話</h4>
+                                <p class="text-gray-400 text-sm">64650263</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="mt-8 rounded-xl overflow-hidden h-48 border border-white/10">
+                         <img src="https://picsum.photos/seed/map/400/200" class="w-full h-full object-cover opacity-60 grayscale hover:grayscale-0 transition-all" alt="Map Location">
+                    </div>
+                </div>
+
+                <div class="w-full lg:w-2/3 bg-[#161b26] p-8 md:p-10 rounded-2xl border border-white/5" data-aos="fade-left">
+                    <form onsubmit="event.preventDefault(); alert('感謝您的留言，我們會盡快聯繫您！');">
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+                            <div>
+                                <label class="block text-gray-400 text-sm mb-2">姓名</label>
+                                <input type="text" class="w-full bg-[#0B0E14] border border-gray-700 rounded-lg py-3 px-4 text-white focus:outline-none focus:border-indigo-500 transition-colors" placeholder="您的稱呼">
+                            </div>
+                            <div>
+                                <label class="block text-gray-400 text-sm mb-2">電話</label>
+                                <input type="tel" class="w-full bg-[#0B0E14] border border-gray-700 rounded-lg py-3 px-4 text-white focus:outline-none focus:border-indigo-500 transition-colors" placeholder="聯繫號碼">
+                            </div>
+                        </div>
+                        <div class="mb-6">
+                            <label class="block text-gray-400 text-sm mb-2">郵箱</label>
+                            <input type="email" class="w-full bg-[#0B0E14] border border-gray-700 rounded-lg py-3 px-4 text-white focus:outline-none focus:border-indigo-500 transition-colors" placeholder="example@email.com">
+                        </div>
+                        <div class="mb-6">
+                            <label class="block text-gray-400 text-sm mb-2">項目需求</label>
+                            <textarea rows="4" class="w-full bg-[#0B0E14] border border-gray-700 rounded-lg py-3 px-4 text-white focus:outline-none focus:border-indigo-500 transition-colors" placeholder="請簡單描述您的項目類型、預算範圍及預期交付時間..."></textarea>
+                        </div>
+                        <button type="submit" class="w-full bg-gradient-to-r from-indigo-600 to-purple-600 text-white font-bold py-4 rounded-lg hover:shadow-lg hover:shadow-indigo-500/30 transition-all transform hover:-translate-y-1">
+                            發送消息
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="bg-[#050608] pt-16 pb-8 border-t border-white/5">
+        <div class="container mx-auto px-6">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-12 mb-12">
+                <div class="col-span-1 md:col-span-1">
+                    <div class="flex items-center space-x-2 mb-4">
+                        <div class="w-6 h-6 bg-gradient-to-br from-indigo-500 to-pink-500 rounded flex items-center justify-center font-bold text-white text-xs">M</div>
+                        <span class="text-lg font-bold text-white">夢微網絡</span>
+                    </div>
+                    <p class="text-gray-500 text-sm leading-relaxed">
+                        專注於高品質數字內容生產，用技術賦能創意，爲品牌創造視覺價值。
+                    </p>
+                </div>
+                <div>
+                    <h4 class="text-white font-bold mb-4">快速導航</h4>
+                    <ul class="space-y-2 text-sm text-gray-500">
+                        <li><a href="#home" class="hover:text-indigo-400">首頁</a></li>
+                        <li><a href="#services" class="hover:text-indigo-400">服務項目</a></li>
+                        <li><a href="#portfolio" class="hover:text-indigo-400">作品案例</a></li>
+                        <li><a href="#about" class="hover:text-indigo-400">關於我們</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="text-white font-bold mb-4">服務支持</h4>
+                    <ul class="space-y-2 text-sm text-gray-500">
+                        <li><a href="#" class="hover:text-indigo-400">隱私政策</a></li>
+                        <li><a href="#" class="hover:text-indigo-400">服務條款</a></li>
+                        <li><a href="#" class="hover:text-indigo-400">版權聲明</a></li>
+                        <li><a href="#" class="hover:text-indigo-400">人才招聘</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="text-white font-bold mb-4">關注我們</h4>
+                    <div class="flex space-x-4">
+                        <a href="#" class="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center text-gray-400 hover:bg-indigo-600 hover:text-white transition-all"><i class="ri-wechat-line"></i></a>
+                        <a href="#" class="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center text-gray-400 hover:bg-pink-600 hover:text-white transition-all"><i class="ri-weibo-line"></i></a>
+                        <a href="#" class="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center text-gray-400 hover:bg-blue-600 hover:text-white transition-all"><i class="ri-zcool-line"></i></a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="border-t border-white/5 pt-8 flex flex-col md:flex-row justify-between items-center">
+                <p class="text-gray-600 text-xs">
+                    &copy; 2023 SwiftCart Media Limited All Rights Reserved.
+                </p>
+                <p class="text-gray-600 text-xs mt-2 md:mt-0">
+                    Design by SwiftCart Media
+                </p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        // 初始化 AOS 動畫
+        AOS.init({
+            duration: 800,
+            once: true,
+            offset: 100,
+            easing: 'ease-out-cubic'
+        });
+
+        // 導航欄滾動效果
+        const navbar = document.getElementById('navbar');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 50) {
+                navbar.classList.add('shadow-lg');
+                navbar.classList.add('bg-[#0B0E14]/95');
+            } else {
+                navbar.classList.remove('shadow-lg');
+                navbar.classList.remove('bg-[#0B0E14]/95');
+            }
+        });
+
+        // 簡單的移動端菜單切換邏輯
+        const btn = document.getElementById('mobile-menu-btn');
+        // 實際項目中應添加展開菜單的邏輯，這裏僅做示意
+        btn.addEventListener('click', () => {
+            alert('移動端菜單展開功能 (需添加額外DOM結構)');
+        });
+    </script>
+</body>
+</html>
